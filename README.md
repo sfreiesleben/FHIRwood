@@ -35,9 +35,12 @@ The above image illustrates the percentage of missing values for the available F
 ## Find a bug?
 
 ## Known issues (work in progress)
+1. Clean up code, make code more readable, make code more effecient.
+1. Separate plots that include many DQA checks, thereby eliminating different color palettes.
+1. As long as the DQA scores section has not been developped, write a paragraph as to what this section is about.
 1. Create DQA scores for every DQA category.
-2. Update DQA check names table in about tab. The table should contain the category of the DQA check, the DQA check name, and the resources on which this DQA check is performed.
-3. Add additional plots for the DQA checks that are not visualized. For this the DQA check category is needed as well as the comple list possible values a check can have.
+1. Update DQA check names table in about tab. The table should contain the category of the DQA check, the DQA check name, and the resources on which this DQA check is performed.
+1. Add additional plots for the DQA checks that are not visualized. For this the DQA check category is needed as well as the complete list possible values a check can have.
 
 ## Authors
 Author: Sherry Freiesleben <br />

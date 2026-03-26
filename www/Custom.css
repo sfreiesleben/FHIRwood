@@ -1,0 +1,17 @@
+/* change the color of the hyperlink in header */
+.skin-blue .main-header .logo>a {
+  color: #000000;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #0000FF;
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #00FF00;
+}
+
+.skin-blue .main-sidebar {
+    background-color: #FF0000;
+}        
+        
