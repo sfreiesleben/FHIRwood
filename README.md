@@ -12,7 +12,7 @@ In Germany, Medical Data Integration Centers (MeDICs) are tasked with extracting
 Within the Medical Informatics Initiative [(MII)](https://www.medizininformatik-initiative.de/de/start), a data quality assessment (DQA) tool has been developed to assess the data quality of MII - KDS resources in a FHIR server.
 The DQA-CQL tool makes use of the Clinical Quality Language [(CQL)](https://cql.hl7.org/) as well as the data quality framework presented in [dataquieR](https://gitlab.com/libreumg/dataquier) to generate Json Files containing the DQA.
 FHIRwood retrieves the data contained within these Json files and assembles a dashboard to clearly visualize the DQA.
-<br /><br />
+<br />
 
 :warning: **Disclaimer**: This repository is a work in progress. If you find a bug or wish to contribure, please scroll down to the `Find a bug?` section of this readme.
 
@@ -29,18 +29,15 @@ The above image illustrates the percentage of missing values for the available F
 
 
 ## Usage
-
+1. 
 
 
 ## Find a bug?
 
 ## Known issues (work in progress)
-1. Session-based Authentication vs Token-based Authentication
-2. Adding end date to obtain data when creating `first_PROD.RData`
-3. Adding start and end date to view data belonging to time interval on dashboard
-4. Create option in `config_PROD.yaml` to view data smaller than 5 as <5 or to leave the numbers as are
-5. Create `first_PROD.RData` backup that is updated when `PROD.RData` is generated
-6. Make project available via Docker
+1. Create DQA scores for every DQA category.
+2. Update DQA check names table in about tab. The table should contain the category of the DQA check, the DQA check name, and the resources on which this DQA check is performed.
+3. Add additional plots for the DQA checks that are not visualized. For this the DQA check category is needed as well as the comple list possible values a check can have.
 
 ## Authors
 Author: Sherry Freiesleben <br />
