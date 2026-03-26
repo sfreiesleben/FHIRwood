@@ -9,12 +9,14 @@
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 In Germany, Medical Data Integration Centers (MeDICs) are tasked with extracting and transforming clinical routine data into FHIR resources.
-Within the Medical Informatics Initiative (MII), a data quality assessment (DQA) tool has been developed to assess the data quality of MII - KDS resources in a FHIR server.
+Within the Medical Informatics Initiative [(MII)](https://www.medizininformatik-initiative.de/de/start), a data quality assessment (DQA) tool has been developed to assess the data quality of MII - KDS resources in a FHIR server.
 The DQA-CQL tool makes use of the Clinical Quality Language [(CQL)](https://cql.hl7.org/) as well as the data quality framework presented in [dataquiR](https://gitlab.com/libreumg/dataquier) to generate Json Files containing the DQA.
 FHIRwood retrieves the data contained within these Json files and assembles a dashboard to clearly visualize the DQA.
-For instance, 
+The following image illustrates the percentage of missing values for the available FHIR resource types.
 
-
+<p align="center">
+  <img src="FHIRwood_missing_values_overall.png" alt="FHIRwood Missing Values Overall" width="1000"/>
+</p>
 
 
 
