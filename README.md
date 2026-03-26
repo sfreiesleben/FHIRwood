@@ -10,74 +10,27 @@
 
 In Germany, Medical Data Integration Centers (MeDICs) are tasked with extracting and transforming clinical routine data into FHIR resources.
 Within the Medical Informatics Initiative [(MII)](https://www.medizininformatik-initiative.de/de/start), a data quality assessment (DQA) tool has been developed to assess the data quality of MII - KDS resources in a FHIR server.
-The DQA-CQL tool makes use of the Clinical Quality Language [(CQL)](https://cql.hl7.org/) as well as the data quality framework presented in [dataquiR](https://gitlab.com/libreumg/dataquier) to generate Json Files containing the DQA.
+The DQA-CQL tool makes use of the Clinical Quality Language [(CQL)](https://cql.hl7.org/) as well as the data quality framework presented in [dataquieR](https://gitlab.com/libreumg/dataquier) to generate Json Files containing the DQA.
 FHIRwood retrieves the data contained within these Json files and assembles a dashboard to clearly visualize the DQA.
-The following image illustrates the percentage of missing values for the available FHIR resource types.
+<br /><br />
+
+:warning: **Disclaimer**: This repository is a work in progress. If you find a bug or wish to contribure, please scroll down to the `Find a bug?` section of this readme.
+
+## Example
 
 <p align="center">
   <img src="FHIRwood_missing_values_overall.png" alt="FHIRwood Missing Values Overall" width="1000"/>
 </p>
-
-
-
-## FHIRwood performs tasks that can be devided into two categories:
-1. Obtain the complete initial bulk of FHIR resources
-2. Update FHIR resources and generate the dashboard
-
-### 1. Obtain the complete initial bulk of FHIR resources
-Tasks belonging to this section only need to be performed once.
-That is, once the information pertaining to the complete inital bulk of FHIR resources has been successfully stored in dataframes, the user does not need to regenerate the data again in order to create or update the dashboard.
-FHIRwood: 
-* Downloads the following available FHIR resources in batches, based on user-defined date and time intervals:
-  - condition
-  - consent
-  - diagnosticReport
-  - entcounter
-  - medication
-  - observation
-  - patient
-  - procedure
-* Flattens the resources and stores the data in dataframes
-* Creates an `.RData file` containing the dataframes of aforementioned FHIR resources as well as metadata.
-Please note that this `.RData` file serves as a backup in case of loss of data.
-
-### 2. Update FHIR resources and generate the dashboard
-Tasks belonging to this section can only be performed once the data pertaining to the complete initial bulk of FHIR resources has been successfully stored in dataframes.
-In this section, a second `.RData` file containing the up-to-date FHIR resources is produced and the dashbord is then created.
-FHIRwood:
-* Downloads and flattens FHIR resources that have been generated within a user-defined amount of days
-* Compares the newly obtained resource IDs to the resource IDs already stored in the dataframes
-* Adds the new resources to the dataframe if their IDs are not found in the dataframes
-* Updates already existing resources with new resources if their IDs are found in the dataframes
-* Creates an `.RData` file containing the up-to-date dataframes as well as metadata
-* Assembles dashboard taht can be viewed in web browser
-Please note that this second `.RData` file needs to get updated in a regular manner to display up-to-date information on the dashboard
+The above image illustrates the percentage of missing values for the available FHIR resource types.
 
 ## Installation
-a. In R Studio using version control
-b. In new R project
-c. Docker (work in progress)
+
+
+
 
 ## Usage
 
-1. Configure `config_PROD.yaml` in your working directory:
 
-```yaml
-secret: 'secret'
-key: 'key'
-base_url: 'base_url'
-access: 'access'
-authorize: 'authorize'
-last_x_days: number_of_days
-start_year: year
-start_month: month
-```
-
-secret, key, base_url, access, and authorize are needed in order to acquire token. 
-
-$\textsf{\color{red}Red text}$
-
-2. In `create_first_PROD.R`, create a vector containing date and time intervals of interest
 
 ## Find a bug?
 
