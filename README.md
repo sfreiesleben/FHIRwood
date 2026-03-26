@@ -14,7 +14,7 @@ The DQA-CQL tool makes use of the Clinical Quality Language [(CQL)](https://cql.
 FHIRwood retrieves the data contained within these Json files and assembles a dashboard to clearly visualize the DQA.
 <br />
 
-:warning: **Disclaimer**: This repository is a work in progress. If you find a bug or wish to contribure, please scroll down to the `Find a bug?` section of this readme.
+:warning: **Disclaimer**: This repository is a work in progress. If you find a bug or wish to contribute, please scroll down to the `Find a bug? Wish to contribute?` section of this readme.
 
 ## Example
 
@@ -25,19 +25,31 @@ The above image illustrates the percentage of missing values for the available F
 
 ## Installation
 
+Here is a quick guide on how to download and run a local installation of FHIRwood:
 
+1. Download the repository and unzip it (if needed). To do this, click on the green code button and click "Download ZIP"
+
+<p align="center">
+  <img src="FHIRwood_download_zip.PNG" alt="FHIRwood Download Zip" width="500"/>
+</p>
+
+
+FHIRwood_download_zip.PNG
+
+1. Enter the App folder of the repository.
+1. Run mapPat using R or RStudio.
 
 
 ## Usage
 1. 
 
 
-## Find a bug?
+## Find a bug? Wish to contribute?
 
 ## Known issues (work in progress)
-1. Clean up code, make code more readable, make code more effecient.
+1. Clean up code, make code more readable, make code more dfficient.
 1. Separate plots that include many DQA checks, thereby eliminating different color palettes.
-1. As long as the DQA scores section has not been developped, write a paragraph as to what this section is about.
+1. As long as the DQA scores section has not been developed, write a paragraph as to what this section is about.
 1. Create DQA scores for every DQA category.
 1. Update DQA check names table in about tab. The table should contain the category of the DQA check, the DQA check name, and the resources on which this DQA check is performed.
 1. Add additional plots for the DQA checks that are not visualized. For this the DQA check category is needed as well as the complete list possible values a check can have.
