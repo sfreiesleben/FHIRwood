@@ -92,4 +92,4 @@ p.mv.combined <- ggplot(df.mv.combined, aes(x = name, y = count, fill = percent)
     breaks = seq(0, 100, 5)
   )
 
-p.mv.combined
+#p.mv.combined

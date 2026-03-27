@@ -17,13 +17,15 @@ dqa.check.names <- sort(unique(df.Patient$dqaName))
 
 c.name <- c("dqaName",
             "text",
-            "count")
+            "count",
+            "percent",
+            "percent_text")
 
 r.name <- c()
 
 df.Patient.info <- data.frame(matrix(ncol = length(c.name),
-                                     nrow = length(r.name),
-                                     dimnames = list(r.name, c.name)))
+                                       nrow = length(r.name),
+                                       dimnames = list(r.name, c.name)))
 
 for(i in 1:length(dqa.check.names)){
   name <- dqa.check.names[i]
@@ -36,37 +38,67 @@ for(i in 1:length(dqa.check.names)){
   if(length(rows) == 1){
     df.info <- df.Patient[rows,]
     
+    #if true exist implies that false does not exist and it has a 0 count
+    #please check this in the future if all checks are true/false paired, this information is not available at the moment
     if(df.info$text == "true"){
       df.info.f <- data.frame("dqaName" = df.info$dqaName,
                               "text" = "false",
-                              "count"= 0)
+                              "count"= 0,
+                              "percent" = 0,
+                              "percent_text" = "0%")
+      df.info$percent = 100
+      df.info$percent_text = "100%"
       
       df.Patient.info <- rbind(df.Patient.info, df.info, df.info.f)
     }
     
+    #if false exist implies that true does not exist and it has a 0 count
+    #please check this in the future if all checks are true/false paired, this information is not available at the moment
     if(df.info$text == "false"){
       df.info.t <- data.frame("dqaName" = df.info$dqaName,
                               "text" = "true",
-                              "count"= 0)
+                              "count"= 0,
+                              "percent" = 0,
+                              "percent_text" = "0%")
       
-      df.Patient.info <- rbind(df.Patient.info, df.info.t,  df.info)
+      df.info$percent = 100
+      df.info$percent_text = "100%"
+      
+      df.Patient.info <- rbind(df.Patient.info, df.info.t, df.info)
     }
     
+    
     if((df.info$text!="true") && (df.info$text!="false")){
-      print(paste0(i, ": ", rows))
+      #print(paste0(i, ": ", rows))
+      next
     }
     
   }
   
   if(length(rows) == 2){
     df.info <- df.Patient[rows,]
+    df.info$count <- as.numeric(df.info$count)
+    
+    df.info <- df.info %>%
+      mutate(percent = round(count/sum(count)*100, digits = 0)) %>%
+      mutate(percent_text = paste0(percent, "%"))
+    
+    dt <- grep("dateTime", df.info$text)
+    #print(paste0(i, ": ", rows))
+    
+    if(length(dt)> 0){
+      next
+    }
+    
     df.Patient.info <- rbind(df.Patient.info, df.info)
   }
   
   if((length(rows) != 1) && (length(rows) != 2)){
-    print(paste0(i, ": ", rows))
+    #print(paste0(i, ": ", rows))
+    next
   }
 }
+
 
 #create df containing missing values
 df.Patient.mv <- df.Patient.info %>%
@@ -118,13 +150,16 @@ p.pat.mv <- ggplot(df.Patient.mv, aes(x = mv_name, y = count, fill = text)) +
     #axis.title.x = element_text(margin = margin(b=7), hjust = 0.5, vjust = -4),
     axis.title.y = element_text(margin = margin(b=7), hjust = 0.5, vjust = 3),
     axis.text.x = element_text(size = 9, angle = 45, vjust = 1, hjust=1),
-    axis.text.y = element_text(size = 11),
+    axis.text.y = element_text(size = 13),
     axis.title.x = element_blank(),
     legend.title = element_blank()
     #legend.position = "none" # Removes the legend
   ) +
   scale_fill_manual(labels = c("False", "True"),
     values = c("#C5DFED","#3C8DBC")) +
+  
+  geom_text(aes(label = ifelse(text == "true", percent_text, "")), 
+            position = position_dodge(width = 0), vjust = 0.5, hjust = -0.1, size = 5) +
   
   #guides(fill = guide_legend(title = "Value")) +
   

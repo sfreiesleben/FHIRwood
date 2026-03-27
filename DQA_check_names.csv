@@ -44,11 +44,13 @@ Inadmissible categorical values LOINC.Befund
 Inadmissible categorical values Materialart
 Inadmissible categorical values Medikationslistencode
 Inadmissible categorical values Mehrfachkodierungs-Kennzeichen
+Inadmissible categorical values MII consent-category
 Inadmissible categorical values mode
 Inadmissible categorical values observation-category
 Inadmissible categorical values Pathology report code
 Inadmissible categorical values Probenbehälter
 Inadmissible categorical values procedure_category_sct
+Inadmissible categorical values Provision Type
 Inadmissible categorical values Schlussfolgerungscode
 Inadmissible categorical values Seitenlokalisation
 Inadmissible categorical values ServiceSectionID
@@ -71,6 +73,7 @@ LOINC.Befund observed
 Materialart observed
 Medikationslistencode observed
 Mehrfachkodierungs-Kennzeichen observed
+MII consent-category observed
 Missing values Aufnahmeanlass
 Missing values Aufnahmenummer
 Missing values authoredOn
@@ -216,6 +219,7 @@ OPS observed
 Pathology report code observed
 Probenbehälter observed
 procedure_category_sct observed
+Provision Type observed
 Schlussfolgerungscode observed
 Seitenlokalisation observed
 ServiceSectionID observed

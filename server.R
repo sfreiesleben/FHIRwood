@@ -153,32 +153,41 @@ function(input, output, session) {
   ###plot condition dqa
   output$cond.grid <- renderPlot({
     p.cond.grid
-  }, height = 700)
+  }, height = 1000)
   
   ###plot consent dqa
   output$cons.grid <- renderPlot({
     p.cons.grid
-  }, height = 700)
+  }, height = 800)
   
   ###plot diagnosticReportLab dqa
   #for the time being, only plot missing values
   output$drl.mv <- renderPlot({
     p.drl.mv
-  })
+  }, height = 700)
   
   ###plot encounter dqa
   output$enc.grid <- renderPlot({
     p.enc.grid
-  }, height = 1000)
+  }, height = 1050)
   
   ###plot medicationAdministration dqa
-  output$medAdmin.grid <- renderPlot({
-    p.medAdmin.grid
+  #output$medAdmin.grid <- renderPlot({
+  #  p.medAdmin.grid
+  #}, height = 700)
+  
+  output$medAdmin.mv <- renderPlot({
+    p.medAdmin.mv
   }, height = 700)
   
   ###plot medicationList dqa
-  output$medList.grid <- renderPlot({
-    p.medList.grid
+  #output$medList.grid <- renderPlot({
+  #  p.medList.grid
+  #}, height = 700)
+  
+  ###plot medicationList dqa
+  output$medList.mv<- renderPlot({
+    p.medList.mv
   }, height = 700)
   
   ###plot medicationRequest dqa

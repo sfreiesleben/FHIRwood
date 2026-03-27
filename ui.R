@@ -168,7 +168,7 @@ tab_items <- tabItems(
           ),
           
           fluidRow(
-            box(plotOutput("medAdmin.grid"),
+            box(plotOutput("medAdmin.mv"),
                 #height = 500,
                 width = "100%"
             ),
@@ -183,7 +183,7 @@ tab_items <- tabItems(
           ),
           
           fluidRow(
-            box(plotOutput("medList.grid"),
+            box(plotOutput("medList.mv"),
                 #height = 500,
                 width = "100%"
             ),

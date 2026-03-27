@@ -17,7 +17,9 @@ dqa.check.names <- sort(unique(df.MedicationList$dqaName))
 
 c.name <- c("dqaName",
             "text",
-            "count")
+            "count",
+            "percent",
+            "percent_text")
 
 r.name <- c()
 
@@ -36,20 +38,33 @@ for(i in 1:length(dqa.check.names)){
   if(length(rows) == 1){
     df.info <- df.MedicationList[rows,]
     
+    #if true exist implies that false does not exist and it has a 0 count
+    #please check this in the future if all checks are true/false paired, this information is not available at the moment
     if(df.info$text == "true"){
       df.info.f <- data.frame("dqaName" = df.info$dqaName,
                               "text" = "false",
-                              "count"= 0)
+                              "count"= 0,
+                              "percent" = 0,
+                              "percent_text" = "0%")
+      df.info$percent = 100
+      df.info$percent_text = "100%"
       
       df.MedicationList.info <- rbind(df.MedicationList.info, df.info, df.info.f)
     }
     
+    #if false exist implies that true does not exist and it has a 0 count
+    #please check this in the future if all checks are true/false paired, this information is not available at the moment
     if(df.info$text == "false"){
       df.info.t <- data.frame("dqaName" = df.info$dqaName,
                               "text" = "true",
-                              "count"= 0)
+                              "count"= 0,
+                              "percent" = 0,
+                              "percent_text" = "0%")
       
-      df.MedicationList.info <- rbind(df.MedicationList.info, df.info.t,  df.info)
+      df.info$percent = 100
+      df.info$percent_text = "100%"
+      
+      df.MedicationList.info <- rbind(df.MedicationList.info, df.info.t, df.info)
     }
     
     
@@ -62,6 +77,12 @@ for(i in 1:length(dqa.check.names)){
   
   if(length(rows) == 2){
     df.info <- df.MedicationList[rows,]
+    df.info$count <- as.numeric(df.info$count)
+    
+    df.info <- df.info %>%
+      mutate(percent = round(count/sum(count)*100, digits = 0)) %>%
+      mutate(percent_text = paste0(percent, "%"))
+    
     dt <- grep("dateTime", df.info$text)
     #print(paste0(i, ": ", rows))
     
@@ -137,20 +158,24 @@ p.medList.mv <- ggplot(df.MedicationList.mv, aes(x = mv_name, y = count, fill = 
     #axis.title.x = element_text(margin = margin(b=7), hjust = 0.5, vjust = -4),
     axis.title.y = element_text(margin = margin(b=7), hjust = 0.5, vjust = 3),
     axis.text.x = element_text(size = 9, angle = 45, vjust = 1, hjust=1),
-    axis.text.y = element_text(size = 11),
+    axis.text.y = element_text(size = 13),
     axis.title.x = element_blank(),
     legend.title = element_blank()
     #legend.position = "none" # Removes the legend
   ) +
+  
   scale_fill_manual(labels = c("False", "True"),
                     values = c("#C5DFED","#3C8DBC")) +
+  
+  geom_text(aes(label = ifelse(text == "true", percent_text, "")), 
+            position = position_dodge(width = 0), vjust = 0.5, hjust = -0.1, size = 5) +
   
   #guides(fill = guide_legend(title = "Value")) +
   
   scale_y_continuous(#"Gesamtzahl der Fälle pro MedicationList",
-    limits = c(0, floor(max(df.MedicationList.mv$count)/10)*10+10),
+    limits = c(0, floor(max(df.MedicationList.mv$count)/100000)*100000+50000),
     #minor_breaks = NULL,
-    breaks = seq(0, floor(max(df.MedicationList.mv$count)/10)*10+10, 2)
+    breaks = seq(0, floor(max(df.MedicationList.mv$count)/100000)*100000+50000, 10000)
   )
 
 #p.medList.mv
@@ -159,46 +184,45 @@ p.medList.mv <- ggplot(df.MedicationList.mv, aes(x = mv_name, y = count, fill = 
 # plot: df.medicationList.rest values
 ################################################################################
 
-p.medList.rest <- ggplot(df.MedicationList.rest, aes(x = rest_name, y = count, fill = text)) + 
-  geom_bar(stat = "identity") + coord_flip() +
-  
-  ggtitle("Additional Data Quality Checks") +
-  ylab("Number of values") +
-  xlab(" ") +
-  
-  theme_minimal() +
-  
-  theme(
-    plot.title = element_text(face = "bold", size=15, hjust=0.5),
-    axis.title.x = element_text(margin = margin(b=7), hjust = 0.5, vjust = -4),
-    axis.title.y = element_text(margin = margin(b=7), hjust = 0.5, vjust = 3),
-    axis.text.x = element_text(size = 9, angle = 45, vjust = 1, hjust=1),
-    axis.text.y = element_text(size = 11),
-    legend.title = element_blank()
-    #legend.position = "none" # Removes the legend
-  ) +
-  scale_fill_manual(labels = c("Snapshot", "Working"), #make sure the order is correct here!
-                    values = c("#C5DFED","#3C8DBC")) +
-  
-  #guides(fill = guide_legend(title = "Value")) +
-  
-  scale_y_continuous(#"Gesamtzahl der Fälle pro MedicationList",
-    limits = c(0, floor(max(df.MedicationList.rest$count)/10)*10+20),
-    #minor_breaks = NULL,
-    breaks = seq(0, floor(max(df.MedicationList.rest$count)/10)*10+20, 2) #make sure this is the same sequence as .mv
-  )
+#p.medList.rest <- ggplot(df.MedicationList.rest, aes(x = rest_name, y = count, fill = text)) + 
+#  geom_bar(stat = "identity") + coord_flip() +
+#  
+#  ggtitle("Additional Data Quality Checks") +
+#  ylab("Number of values") +
+#  xlab(" ") +
+#  
+#  theme_minimal() +
+#  
+#  theme(
+#    plot.title = element_text(face = "bold", size=15, hjust=0.5),
+#    axis.title.x = element_text(margin = margin(b=7), hjust = 0.5, vjust = -4),
+#    axis.title.y = element_text(margin = margin(b=7), hjust = 0.5, vjust = 3),
+#    axis.text.x = element_text(size = 9, angle = 45, vjust = 1, hjust=1),
+#    axis.text.y = element_text(size = 11),
+#    legend.title = element_blank()
+#    #legend.position = "none" # Removes the legend
+#  ) +
+#  scale_fill_manual(labels = c("Snapshot", "Working"), #make sure the order is correct here!
+#                    values = c("#C5DFED","#3C8DBC")) +
+#  
+#  #guides(fill = guide_legend(title = "Value")) +
+#  
+#  scale_y_continuous(#"Gesamtzahl der Fälle pro MedicationList",
+#    limits = c(0, floor(max(df.MedicationList.mv$count)/100000)*100000+50000),
+#    #minor_breaks = NULL,
+#    breaks = seq(0, floor(max(df.MedicationList.mv$count)/100000)*100000+50000, 10000)
+#  )
 
 #p.medList.rest
-
 
 ################################################################################
 # add 2 plots in grid
 ################################################################################
 
 #use package cowplot
-p.medList.grid <- plot_grid(p.medList.mv, p.medList.rest,
-                        align = "hv", ncol = 1, rel_heights = c(10/12, 2/12))
-
+#p.medList.grid <- plot_grid(p.medList.mv, p.medList.rest,
+#                        align = "hv", ncol = 1, rel_heights = c(10/12, 2/12))
+#
 #p.medList.grid
 
 
