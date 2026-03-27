@@ -1,155 +1,65 @@
-Aufnahmeanlass observed
 consent-category Loinc observed
 Consent-Policy - Ende der Gültigkeit vor Beginn der Gültigkeit
-Contradiction
+Country observed
 Diagnosesicherheit observed
-Dokumentationsdatum ist vor ist vor Untersuchungszeitpunkt
 Effective type
 Einnahmedauer Ende ist vor Einnahmedauer Start
 Einnahmedauer type
-Entlassdatum vor Aufnahmedatum
-Entlassgrund DritteStelle observed
-Entlassgrund ErsteUndZweiteStelle observed
-Entnahmemethode observed
-Fachabteilung observed
-Fachabteilung_erweitert observed
 Fallkontext observed
-identifier Filler-ID observed
-identifierType observed
-Inadmissible categorical values Aufnahmeanlass
+Gender observed
 Inadmissible categorical values consent-category Loinc
 Inadmissible categorical values Diagnosesicherheit
 Inadmissible categorical values dosage.route
-Inadmissible categorical values Encounter.Aufnahmegrund.ErsteUndZweiteStelle"
-Inadmissible categorical values Encounter.class
-Inadmissible categorical values Encounter.status
-Inadmissible categorical values Entlassgrund DritteStelle
-Inadmissible categorical values Entlassgrund ErsteUndZweiteStelle
-Inadmissible categorical values Entnahmemethode
-Inadmissible categorical values Fachabteilung
-Inadmissible categorical values Fachabteilung_erweitert
 Inadmissible categorical values Fallkontext
-Inadmissible categorical values identifier Filler-ID
-Inadmissible categorical values identifierType
 Inadmissible categorical values Intention
-Inadmissible categorical values Interpretation
 Inadmissible categorical values Klinischer Status
-Inadmissible categorical values Kontaktart
-Inadmissible categorical values Kontaktebene
-Inadmissible categorical values Laborergebnis_Qualitativ
-Inadmissible categorical values Laborparameter Loinc
-Inadmissible categorical values LOINC
-Inadmissible categorical values loinc-observation
-Inadmissible categorical values LOINC.Befund
-Inadmissible categorical values Materialart
 Inadmissible categorical values Medikationslistencode
 Inadmissible categorical values Mehrfachkodierungs-Kennzeichen
 Inadmissible categorical values MII consent-category
 Inadmissible categorical values mode
-Inadmissible categorical values observation-category
-Inadmissible categorical values Pathology report code
-Inadmissible categorical values Probenbehälter
-Inadmissible categorical values procedure_category_sct
+Inadmissible categorical values Patient.address.country
+Inadmissible categorical values Patient.gender
 Inadmissible categorical values Provision Type
-Inadmissible categorical values Schlussfolgerungscode
 Inadmissible categorical values Seitenlokalisation
-Inadmissible categorical values ServiceSectionID
 Inadmissible categorical values Status
 Inadmissible categorical values Verifizierungsstatus
-Inadmissible categorical values: Patient.gender
 Intention observed
-Interpretation observed
 Klinischer Status observed
 Klinischer Zeitraum Ende ist vor klinischer Zeitraum Start
 Klinischer Zeitraum type
-Kontaktart observed
-Kontaktebene observed
-Kontaktklasse observed
-Laborergebnis_Qualitativ observed
-Laborparameter Loinc observed
-loinc-observation observed
-LOINC observed
-LOINC.Befund observed
-Materialart observed
 Medikationslistencode observed
 Mehrfachkodierungs-Kennzeichen observed
 MII consent-category observed
-Missing values Aufnahmeanlass
-Missing values Aufnahmenummer
 Missing values authoredOn
-Missing values basedOn
 Missing values Beginn der Gültigkeit der Consent-Policy
 Missing values clinicalStatus
-Missing values Collection time
 Missing values Condition.id
 Missing values Condition.meta
 Missing values consent-category Loinc
 Missing values Consent.id
 Missing values Consent.meta
 Missing values Consent.status
-Missing values Container volume or size
 Missing values context
 Missing values Context
 Missing values Diagnosesicherheit
-Missing values Diagnosesubtyp.code
-Missing values Diagnosesubtyp.display
-Missing values Diagnosetyp.code
-Missing values Diagnosetyp.display
-Missing values diagnosis.condition
-Missing values DiagnosticReport.id
-Missing values Dokumentationsdatum
 Missing values dosage.route
 Missing values dosageInstruction.timing
-Missing values Durchfuehrungsdatum
-Missing values effective
 Missing values Effective
 Missing values encounter
-Missing values Encounter.Aufnahmegrund.DritteStelle.code
-Missing values Encounter.Aufnahmegrund.DritteStelle.display
-Missing values Encounter.Aufnahmegrund.ErsteUndZweiteStelle.code
-Missing values Encounter.Aufnahmegrund.ErsteUndZweiteStelle.display
-Missing values Encounter.Aufnahmegrund.VierteStelle.code
-Missing values Encounter.Aufnahmegrund.VierteStelle.display
-Missing values Encounter.class.code
-Missing values Encounter.class.display
-Missing values Encounter.id
-Missing values Encounter.meta.profile
-Missing values Encounter.status
 Missing values Ende der Gültigkeit der Consent-Policy
-Missing values Entlassgrund
-Missing values Entnahmemethode
 Missing values entry
 Missing values Erstellungszeitpunkt
-Missing values Fachabteilung.code
-Missing values Fachabteilung.display
 Missing values Fallkontext
 Missing values Feststellungsdatum
 Missing values icd-10-gm-mehrfachcodierungs-kennzeichen
 Missing values ICD10
-Missing values identifier assigner
-Missing values identifier Filler-ID
-Missing values identifier Placer-ID
-Missing values identifier System
-Missing values identifier Value
-Missing values identifierType
-Missing values identifierValue
 Missing values Intention
-Missing values Interpretation
 Missing values Klinischer Zeitraum
-Missing values Kontaktebene.code
-Missing values Kontaktebene.display
-Missing values Labor-ID
-Missing values Laborgruppe
-Missing values Laborparameter
 Missing values List.id
 Missing values List.meta
 Missing values List.mode
 Missing values List.status
 Missing values List.title
-Missing values LOINC
-Missing values loinc-observation
-Missing values LOINC.Befund
-Missing values Materialart
 Missing values MedicationAdministration.id
 Missing values MedicationAdministration.medicationReference
 Missing values MedicationAdministration.meta
@@ -162,67 +72,29 @@ Missing values MedicationStatement.id
 Missing values MedicationStatement.meta
 Missing values MedicationStatement.status
 Missing values Medikationslistencode
-Missing values Messwert
-Missing values meta
 Missing values MII consent-category
-Missing values observation
-Missing values observation-category
-Missing values Observation.id
-Missing values OPS.code
-Missing values OPS.display
-Missing values partOf
-Missing values Pathology report code
 Missing values Patient
-Missing values performer
-Missing values period.end
-Missing values period.start
+Missing values Patient.address.country
+Missing values Patient.address.postalCode
+Missing values Patient.birthDate
+Missing values Patient.gender
+Missing values Patient.id
+Missing values Patient.identifier.PseudonymisierterIdentifier
+Missing values Patient.meta
+Missing values Patient.meta.profile
 Missing values policy
 Missing values Primaerdiagnose
-Missing values Probenbehälter
-Missing values Procedure.id
-Missing values Procedure.meta
-Missing values Processing
 Missing values provision type
-Missing values quantity
-Missing values Quantity of specimen within container
 Missing values recordedDate
-Missing values Referenzbereich
 Missing values request
-Missing values result
-Missing values Schlussfolgerungscode
 Missing values Seitenlokalisation
-Missing values ServiceRequest
-Missing values ServiceSectionID
-Missing values SNOMED.code
-Missing values SNOMED.display
-Missing values specimen
-Missing values Specimen ID
-Missing values Specimen meta
-Missing values Specimen Text
-Missing values status
 Missing values Status
 Missing values subject
 Missing values Subject
-Missing values Untersuchungszeitpunkt
 Missing values Verifizierungsstatus
-Missing values: Patient.address.country
-Missing values: Patient.address.postalCode
-Missing values: Patient.birthDate
-Missing values: Patient.gender
-Missing values: Patient.id
-Missing values: Patient.identifier:PseudonymisierterIdentifier
-Missing values: Patient.meta
-Missing values: Patient.meta.profile
 mode observed
-observation-category observed
-OPS observed
-Pathology report code observed
-Probenbehälter observed
-procedure_category_sct observed
 Provision Type observed
-Schlussfolgerungscode observed
 Seitenlokalisation observed
-ServiceSectionID observed
 Status observed
 Verifizierungsstatus observed
 Weg der Anwendung observed

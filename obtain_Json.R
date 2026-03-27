@@ -22,15 +22,20 @@
 # create list of files of raw Json files directly from saved repository
 ################################################################################
 
-l.path <- paste0("./DQA-CQL/reports/", list.files("../DQA-CQL/reports"))
+#l.path <- paste0("./DQA-CQL/reports/", list.files("../DQA-CQL/reports"))
 
-l.path <- l.path[grep(".json", l.path)]
+#l.path <- l.path[grep(".json", l.path)]
 
-l.name <- gsub("./DQA-CQL/reports/", "", l.path)
-l.name <- gsub(".json", "", l.name)
+path <- "./DQA-CQL/reports/"
+files <- dir(path, pattern = "*.json")
 
-for(i in 1:length(l.name)){
-  name <- l.name[i]
+l.path <- paste0(path, files)
+
+#l.name <- gsub("./DQA-CQL/reports/", "", l.path)
+#l.name <- gsub(".json", "", l.name)
+
+for(i in 1:length(files)){
+  name <- gsub(".json", "", files[i])
   name <- paste0("j.", name)
   
   assign(name, jsonlite::fromJSON(l.path[i]))
@@ -48,7 +53,7 @@ c.name <- c("resourceName",
             #"null"
             )
 
-r.name <- l.name
+r.name <- gsub(".json", "", files)
 
 df.initialPop <- data.frame(matrix(ncol = length(c.name),
                                    nrow = length(r.name),
@@ -60,13 +65,14 @@ dqa.check.names.all <- c()
 # create DQ data frames for every resource type
 ################################################################################
 
-for(i in 1:length(l.name)){
+for(i in 1:length(files)){
   #get json list
   jl <- jsonlite::fromJSON(l.path[i], flatten = FALSE)
   
   #create name for resulting dqa data frame
-  r.name <- l.name[i]
+  r.name <- gsub(".json", "", files[i])
   df.name <- paste0("df.", r.name)
+  #df.name <- files[i]
   
   #get resource name as saved in the Json file
   resource <- unlist(jl$group$code, recursive = FALSE, use.names = FALSE)

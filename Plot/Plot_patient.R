@@ -164,9 +164,9 @@ p.pat.mv <- ggplot(df.Patient.mv, aes(x = mv_name, y = count, fill = text)) +
   #guides(fill = guide_legend(title = "Value")) +
   
   scale_y_continuous(#"Gesamtzahl der Fälle pro Patient",
-                     limits = c(0, floor(max(df.Patient.mv$count)/1000)*1000+500),
+                     limits = c(0, floor(max(df.Patient.mv$count)/100000)*100000+150000),
                      #minor_breaks = NULL,
-                     breaks = seq(0, floor(max(df.Patient.mv$count)/1000)*1000+500, 1000)
+                     breaks = seq(0, floor(max(df.Patient.mv$count)/100000)*100000+150000, 50000)
                      )
 
 #p.pat.mv
@@ -233,9 +233,9 @@ p.pat.icv <- ggplot(df.Patient.icv, aes(x = icv_name, y = count, fill = text)) +
   #guides(fill = guide_legend(title = "Value")) +
   
   scale_y_continuous(#"Gesamtzahl der Fälle pro Patient",
-    limits = c(0, floor(max(df.Patient.icv$count)/1000)*1000+500),
+    limits = c(0, floor(max(df.Patient.mv$count)/100000)*100000+150000),
     #minor_breaks = NULL,
-    breaks = seq(0, floor(max(df.Patient.icv$count)/1000)*1000+500, 1000)
+    breaks = seq(0, floor(max(df.Patient.mv$count)/100000)*100000+150000, 50000)
   )
 
 #p.pat.icv

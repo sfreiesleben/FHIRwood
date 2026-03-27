@@ -45,19 +45,19 @@ source("./Plot/Plot_consent.R")
 # obtain plots based on Diagnostic Report: Laboratory FHIR resources
 ################################################################################
 
-source("./Plot/Plot_diagnosticReportLab.R")
+#source("./Plot/Plot_diagnosticReportLab.R")
 
 ################################################################################
 # obtain plots based on Diagnostic Report: Pathology FHIR resources
 ################################################################################
 
-source("./Plot/Plot_diagnosticReportPatho.R")
+#source("./Plot/Plot_diagnosticReportPatho.R")
 
 ################################################################################
 # obtain plots based on Encounter FHIR resources
 ################################################################################
 
-source("./Plot/Plot_encounter.R")
+#source("./Plot/Plot_encounter.R")
 
 ################################################################################
 # obtain plots based on Medication Administration FHIR resources
@@ -87,7 +87,7 @@ source("./Plot/Plot_medicationStatement.R")
 # obtain plots based on Observation FHIR resources
 ################################################################################
 
-source("./Plot/Plot_observation.R")
+#source("./Plot/Plot_observation.R")
 
 ################################################################################
 # obtain plots based on Patient FHIR resources
@@ -99,13 +99,13 @@ source("./Plot/Plot_patient.R")
 # obtain plots based on Procedure FHIR resources
 ################################################################################
 
-source("./Plot/Plot_procedure.R")
+#source("./Plot/Plot_procedure.R")
 
 ################################################################################
 # obtain plots based on Specimen FHIR resources
 ################################################################################
 
-source("./Plot/Plot_specimen.R")
+#source("./Plot/Plot_specimen.R")
 
 ################################################################################
 # obtain plots of missing values
